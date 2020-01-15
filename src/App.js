@@ -53,7 +53,7 @@ function App() {
                 <span>NodeJS, ReactJS</span>
               </div>
             </header>
-            <p>#nodejs</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic iure similique ex natus et </p>
             <a href="https://github.com/JoseMurilloc">Acessar perfil no Github</a>
           </li>
 
