@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import api from './services/axios';
 
 // Componente: Bloco usolado de HTML, CSS e JS, no qual não interfere no restante da aplicação...
 // Propriedade: E como se fosse os atributos das tags HTML, para podemos enviar informarções pela {props} que são os argumentos de componente
@@ -10,6 +11,8 @@ import './Sidebar.css';
 import './Main.css';
 
 function App() {
+  const [ devs, setDevs ] = useState([]);
+
   const [ github_username, setGithubUsername ] = useState('');
   const [techs, setTechs ] = useState('');
   const [ latitude, setLatitude] = useState('');
@@ -32,16 +35,37 @@ function App() {
     )
   }, []);
 
+  useEffect(() => {
+    // Não pode usar async no useEffect
+    async function loadDevs() {
+      const response = await api.get('/devs');
+      setDevs(response.data);
+    } 
+
+    loadDevs();
+  }, []);
+
   async function  handleAddDev(e) {
     e.preventDefault();
     
+    const response = await api.post('/devs', {
+      github_username,
+      techs,
+      latitude,
+      longitude,
+    });
+
+    setGithubUsername('');
+    setTechs('');
+    
+    setDevs([...devs, response.data]);
   }
 
   return (
     <div id="app">
       <aside>
         <strong>Cadastrar</strong>
-        <form>
+        <form onSubmit={handleAddDev}>
           {/* Inputs com o contudos do JSON create POST Dev */}
           <div className="input-block">
             <label htmlFor="github_username">Usuário do Github</label>
@@ -71,55 +95,19 @@ function App() {
       </aside>
       <main>
         <ul>
-          <li className="dev-item">
+          {devs.map(dev => (
+            <li key={dev._id} className="dev-item">
             <header>
-              <img src="https://avatars1.githubusercontent.com/u/43470555?s=460&v=4" alt=""/>
+              <img src={dev.avatar_url} alt={dev.name}/>
               <div className="user-info">
-                <strong>José Murillo</strong>
-                <span>NodeJS, ReactJS</span>
+                <strong>{dev.name}</strong>
+                <span>{dev.techs.map(tech =>(tech + ' '))}</span>
               </div>
             </header>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic iure similique ex natus et </p>
-            <a href="https://github.com/JoseMurilloc">Acessar perfil no Github</a>
+            <p>{dev.bio}</p>
+            <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
           </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/43470555?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>José Murillo</strong>
-                <span>NodeJS, ReactJS</span>
-              </div>
-            </header>
-            <p>#nodejs</p>
-            <a href="https://github.com/JoseMurilloc">Acessar perfil no Github</a>
-          </li>
-
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/43470555?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>José Murillo</strong>
-                <span>NodeJS, ReactJS</span>
-              </div>
-            </header>
-            <p>#nodejs</p>
-            <a href="https://github.com/JoseMurilloc">Acessar perfil no Github</a>
-          </li>
-
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/43470555?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>José Murillo</strong>
-                <span>NodeJS, ReactJS</span>
-              </div>
-            </header>
-            <p>#nodejs</p>
-            <a href="https://github.com/JoseMurilloc">Acessar perfil no Github</a>
-          </li>
+          ))}
         </ul>
       </main>
     </div>
