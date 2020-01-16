@@ -4,7 +4,6 @@ li.dev-item {
   border-radius: 2px;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
-
 }
 
 /* Tamnho da imagem mais o aredondamento da imagem */
@@ -54,4 +53,40 @@ li.dev-item a {
 
 li.dev-item a:hover {
   color: #5a2ea6;
+}
+
+li #delete {
+  background: rgb(207, 47, 47);
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFF;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-left: 85%;
+}
+
+li #delete:hover {
+  background: rgb(184, 32, 32);
+}
+
+li #update {
+  background: #8e4dff;
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFF;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-left: 90%;
+}
+
+li #update:hover {
+  background: #5a2ea6;
 }
