@@ -36,10 +36,7 @@ function App() {
 
 
 
-  async function handleDeleteDev() {
-    console.log('onSubmitDelete');
-  }
-
+ 
   return (
     <div id="app">
       <aside>
@@ -49,7 +46,7 @@ function App() {
       <main>
         <ul>
           {devs.map(dev => (
-            <DevItem key={dev._id} dev={dev} Delete={handleDeleteDev} />
+            <DevItem key={dev._id} dev={dev} />
           ))}
         </ul>
       </main>

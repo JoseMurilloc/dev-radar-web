@@ -1,15 +1,15 @@
 import React from 'react';
+import api from '../../services/axios';
 
 import './style.css';
 
-export default function DevItem({ dev, Delete }) {
+export default function DevItem({ dev }) {
 
   // const [username, setUsername] = useState('');
 
   async function handleDelete(e) {
     e.preventDefault();
-    console.log('Antes');
-    Delete();
+    console.log(dev)
   }
 
   return (
