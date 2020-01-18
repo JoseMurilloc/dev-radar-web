@@ -14,7 +14,10 @@ export default function DevItem({ dev, onDelete }) {
 
   return (
     <li key={dev._id} className="dev-item">
-      <button onClick={handleDelete} id="delete">Delete</button>
+      <div className="containerButtons">
+        <button id="update">🚀</button>
+        <button onClick={handleDelete} id="delete">X</button>
+      </div>
               
       
       <header>
@@ -26,7 +29,6 @@ export default function DevItem({ dev, onDelete }) {
       </header>
       <p>{dev.bio}</p>
       <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
-      <button id="update">Edit</button>
     </li>
   );
 }

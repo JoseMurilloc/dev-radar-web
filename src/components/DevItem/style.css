@@ -59,7 +59,7 @@ li.dev-item a:hover {
 
 
 
-li #delete {
+#delete {
   background: rgb(207, 47, 47);
   font-size: 15px;
   font-weight: bold;
@@ -70,14 +70,13 @@ li #delete {
   margin-bottom: 2px;
   cursor: pointer;
   transition: background 0.5s;
-  margin-left: 85%;
 }
 
-li #delete:hover {
+#delete:hover {
   background: rgb(184, 32, 32);
 }
 
-li #update {
+#update {
   background: #8e4dff;
   font-size: 15px;
   font-weight: bold;
@@ -87,10 +86,17 @@ li #update {
   border-radius: 5px;
   margin-bottom: 2px;
   cursor: pointer;
-  transition: background 0.5s;
-  margin-left: 90%;
+  transition: background 0.5s;;
 }
 
-li #update:hover {
+#update:hover {
   background: #5a2ea6;
+}
+
+
+.containerButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
