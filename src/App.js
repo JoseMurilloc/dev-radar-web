@@ -34,7 +34,10 @@ function App() {
     setDevs([...devs, response.data]);
   }
 
-
+  async function handleDelete(github_username) {
+    await api.delete(`devs/${github_username}`);
+    setDevs(devs.filter(dev=> dev.github_username !== github_username)); // Filtro para verificar os devs e "setar" os devs que não foi deletados 
+  }
 
  
   return (
@@ -46,7 +49,11 @@ function App() {
       <main>
         <ul>
           {devs.map(dev => (
-            <DevItem key={dev._id} dev={dev} />
+            <>
+              {/* <button onClick={handleDelete} id="delete">Delete</button> */}
+              <DevItem key={dev._id} dev={dev} onDelete={handleDelete} />
+              {/* <button id="update">Edit</button> */}
+            </>
           ))}
         </ul>
       </main>

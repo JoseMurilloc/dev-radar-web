@@ -1,4 +1,8 @@
 
+li:hover {
+  
+}
+
 li.dev-item {
   background: #FFF;
   border-radius: 2px;
@@ -54,6 +58,11 @@ li.dev-item a {
 li.dev-item a:hover {
   color: #5a2ea6;
 }
+
+
+/* CSS - botão */
+
+
 
 li #delete {
   background: rgb(207, 47, 47);
