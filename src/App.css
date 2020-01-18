@@ -27,5 +27,9 @@
   }
 }
 
+#app img {
+  max-width: 50px;
+  max-height: 50px;
+}
 
 /* Botão delete e edit */

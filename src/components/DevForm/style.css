@@ -3,8 +3,10 @@ aside {
   background: #FFF;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
 
-  border-radius: 2px;
+  border-radius: 20px;
   padding: 30px 20px;
+
+  text-align: center;
 }
 
 aside strong {
@@ -62,6 +64,7 @@ aside form button[type=submit] {
   color: #FFF;
   cursor: pointer;
   transition: background 0.5s;
+  border-radius: 20px;
 }
 
 aside form button[type=submit]:hover {

@@ -43,6 +43,9 @@ function App() {
   return (
     <div id="app">
       <aside>
+        <div className="img-box">
+          <img src={require('./img/gitlogo.png')} alt="Git Logo"/>
+        </div>
         <strong>Cadastrar</strong>
         <DevForm onSubmit={handleAddDev}/>
       </aside>
